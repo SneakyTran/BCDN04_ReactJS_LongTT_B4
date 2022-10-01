@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: "fontGame";
+    src: url("assets/fonts/Pony.ttf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+    max-width: 1200px;
+}
+
+.bookingMovie {
+    font-family: "fontGame";
+}
+
+.bg {
+    position: relative;
+    background-image: url("assets/img/bgmovie.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.bg::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.bt__content {
+    position: relative;
+    z-index: 2;
+}
+
+.ghe {
+    border: 3px solid orange;
+    background-color: ghostwhite;
+    color: black;
+    width: 45px;
+    height: 35px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gheDuocChon {
+    border: 3px solid orange;
+
+    background: orange;
+    color: #000;
+
+    cursor: no-drop !important;
+    border-radius: 5px;
+    width: 45px;
+    height: 35px;
+}
+
+.gheDangChon {
+    background: rgb(109, 238, 109);
+    border: 3px solid rgb(109, 238, 109);
+    color: #000;
+
+    cursor: pointer;
+    border-radius: 5px;
+    width: 45px;
+    height: 35px;
+}
+
+.seat__title {
+    width: 45px;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+}
+
+.rowNumber {
+    /* font-size: 25px; */
+    width: 45px;
+    height: 35px;
+    background: none;
+    border: none;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    font-size: 30px;
+    color: yellow;
+}
+.firstChar {
+    color: yellow;
+    font-size: 35px;
+    margin-right: 15px;
+}
+.ss__title {
+    color: white;
+    font-size: 2rem;
+    white-space: nowrap;
+    text-align: center;
+}
+.screen {
+    border-bottom: 25px solid rgb(255, 159, 95);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    width: 100%;
+    filter: drop-shadow(4px 20px 20px rgba(255, 255, 255, 0.5));
+    font-size: 25px;
+    color: #fff;
 }
