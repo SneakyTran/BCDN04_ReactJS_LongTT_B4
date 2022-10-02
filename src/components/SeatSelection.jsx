@@ -2,8 +2,36 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class SeatSelection extends Component {
+    total = 0;
     renderBooking = () => {
-        console.log(this.props);
+        this.total = 0;
+        return this.props.seatBooking.map((seatList, index) => {
+            let seats = seatList.danhSachGhe;
+            return seats.map((seat, index) => {
+                if (seat.daDat) {
+                    this.total += seat.gia;
+                    return (
+                        <tr key={index}>
+                            <td className="text-warning">{seat.soGhe}</td>
+                            <td className="text-warning">{seat.gia}</td>
+                            <td>
+                                <button
+                                    onClick={() => {
+                                        this.props.dispatch({
+                                            type: "CANCEL_TICKET",
+                                            seat: seat.soGhe,
+                                        });
+                                    }}
+                                    className="btn btn-danger"
+                                >
+                                    <i className="fa-solid fa-xmark"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    );
+                }
+            });
+        });
     };
 
     render() {
@@ -32,7 +60,15 @@ class SeatSelection extends Component {
                             <th>Hủy</th>
                         </tr>
                     </thead>
-                    <tbody>{this.renderBooking()}</tbody>
+                    <tbody>
+                        {this.renderBooking()}
+                        <tr>
+                            <td className="text-warning">Tổng tiền</td>
+                            <td className="text-warning">
+                                {this.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         );
@@ -41,7 +77,7 @@ class SeatSelection extends Component {
 
 const mapStateToProps = (rootReducer) => {
     return {
-        seatBooking: rootReducer.seatBookingReducer,
+        seatBooking: rootReducer.seatListReducer,
     };
 };
 

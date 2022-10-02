@@ -17,9 +17,27 @@ export const seatListReducer = (state = seats, action) => {
             };
             return [...state];
 
-        case "SEAT_CONFIRM":
-            
-            return state;
+        case "COMFIRM_SELECTION":
+            state.map((seatList, indexList) => {
+                seatList.danhSachGhe.find((seat, index) => {
+                    if (seat.isSelected) {
+                        state[indexList].danhSachGhe[index].daDat = true;
+                    }
+                });
+            });
+
+            return [...state];
+
+        case "CANCEL_TICKET":
+            state.map((seatList, indexList) => {
+                seatList.danhSachGhe.map((seat, index) => {
+                    if (seat.soGhe === action.seat) {
+                        state[indexList].danhSachGhe[index].daDat = false;
+                        state[indexList].danhSachGhe[index].isSelected = false;
+                    }
+                });
+            });
+            return [...state];
 
         default:
             return state;

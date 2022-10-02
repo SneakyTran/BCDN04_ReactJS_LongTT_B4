@@ -53,10 +53,6 @@ class SeatList extends Component {
         });
     };
 
-    confirmSelection = () => {
-        
-    };
-
     render() {
         return (
             <div className="col-8 text-center">
@@ -73,7 +69,9 @@ class SeatList extends Component {
                 </div>
                 <button
                     onClick={() => {
-                        this.confirmSelection();
+                        this.props.dispatch({
+                            type: "COMFIRM_SELECTION",
+                        });
                     }}
                     className="btn btn-success"
                 >
